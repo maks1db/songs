@@ -1,0 +1,32 @@
+{
+  "name": "songs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx src/index.ts",
+    "lint": "oxlint"
+  },
+  "dependencies": {
+    "@effect/platform": "^0.88.1",
+    "@effect/platform-node": "^0.91.0",
+    "effect": "^3.16.13",
+    "effect-http": "^0.87.0",
+    "effect-http-node": "^0.27.0",
+    "marked": "^16.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "@prettier/plugin-oxc": "^0.0.4",
+    "oxlint": "^1.6.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

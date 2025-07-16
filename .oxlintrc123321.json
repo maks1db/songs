@@ -1,0 +1,98 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "typescript",
+    "jest",
+    "import",
+    "react",
+    "jsx-a11y"
+  ],
+  "categories": {
+    "correctness": "off"
+  },
+  "env": {
+    "builtin": true
+  },
+  "rules": {
+    "max-classes-per-file": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "func-names": [
+      "error",
+      "as-needed",
+      {
+        "generators": "never"
+      }
+    ],
+    "jest/expect-expect": [
+      "error",
+      {
+        "assertFunctionNames": [
+          "expect",
+          "expectSaga"
+        ]
+      }
+    ],
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true
+      }
+    ],
+    "no-useless-escape": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "lodash",
+            "importNames": [
+              "sample"
+            ],
+            "message": "You probably want to use `sample` from `effector` instead?"
+          }
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "labelComponents": [
+          "CustomInputLabel"
+        ],
+        "labelAttributes": [
+          "label"
+        ],
+        "controlComponents": [
+          "CustomInput"
+        ],
+        "depth": 3
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "max-lines": [
+      "error",
+      400
+    ],
+    "react/react-in-jsx-scope": "off",
+    "no-useless-constructor": "off",
+    "no-redeclare": [
+      "error"
+    ]
+  }
+}
