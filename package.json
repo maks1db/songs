@@ -7,8 +7,8 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "build:css": "npx @tailwindcss/cli -i ./views/index.css -o ./public/css/index.css --watch",
-    "start:dev": "nest start --watch",
+    "build:css": "npx @tailwindcss/cli -i ./src/styles/index.css -o ./public/css/index.css --watch",
+    "start:dev": "nest start --watch & pnpm build:css",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -25,7 +25,10 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "effect": "3.16.12",
+    "@effect/platform": "^0.88.1",
+    "@effect/platform-node": "^0.91.0"
   },
   "keywords": [],
   "author": "",
