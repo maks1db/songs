@@ -20,7 +20,9 @@ export const readFiles = Effect.gen(function* () {
     files.map((file) =>
       Effect.gen(function* () {
         const pathToFile = path.join(config.rootDir, file);
-        const data = yield* fs.readFileString(pathToFile, 'utf-8');
+        const data = yield* fs
+          .readFileString(pathToFile, 'utf-8')
+          .pipe(Effect.map(songToHTML));
         const params = yield* parseFileName(file);
 
         const length = ids.filter((x) => x === params.number).length;
@@ -55,3 +57,7 @@ export const parseFileName = (file: string) =>
 
     return { number: parsedNumber, artist, title, stringNumber };
   });
+
+const songToHTML = (song: string) => {
+  return song.replaceAll('<>', '<span>').replaceAll('</>', '</span>');
+};

@@ -2,5 +2,8 @@
 
     <body class="p-8 font-mono">
         <%- include('partials/title', {value: `${stringNumber}. ${artist} - ${title}` }); %>
-        <p class="whitespace-break-spaces text-xs"><%=song %></p>
+            <p class="whitespace-break-spaces text-xs flex flex-row gap-8">
+                <%-song %>
+            </p>
+            <div class="break-after-page"></div>
     </body>
