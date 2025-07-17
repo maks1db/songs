@@ -20,10 +20,10 @@ export const FiveLadLive = Layer.effect(
                     new ParseSongError({ message: 'Название не найдено' }),
                   ),
             ),
-            Effect.map((x) => x.split(':')[0]),
+            Effect.map((x) => x.replace(': аккорды', '')),
             Effect.map((x) => x.split('-').map((x) => x.trim())),
-            Effect.map(([artist, title]) => ({
-              title,
+            Effect.map(([artist, ...title]) => ({
+              title: title.join('-'),
               artist,
             })),
           );
