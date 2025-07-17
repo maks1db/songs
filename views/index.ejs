@@ -1,14 +1,15 @@
 <%- include('partials/head'); %>
 
-    <body class="p-8 font-mono">
-        <%- include('partials/title', {value: "Песенник" }); %>
-
-            <ul>
-                <% songs.forEach(function(song){ %>
-                    <li><a href="/song/<%= song.id %>"
-                            class="hover:text-gray-950 font-medium tracking-widest text-pretty uppercase text-gray-600">
-                            <%= song.number %>.<%= song.title %>
-                        </a></li>
-                    <% }); %>
-            </ul>
-    </body>
+<body class="p-8 font-mono">
+    <%- include('partials/title', {value: "Содержание" }); %>
+    <ul>
+        <% songs.forEach(function(song){ %>
+            <li>
+                <a href="/song/<%= song.id %>"
+                    class="hover:text-gray-950 font-medium tracking-widest text-pretty uppercase text-gray-600">
+                    <%= song.title %>
+                </a>
+            </li>
+            <% }); %>
+    </ul>
+</body>

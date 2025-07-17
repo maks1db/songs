@@ -46,7 +46,13 @@ export class AppService {
     return this.runtime.runPromise(program);
   }
 
-  getHello(): string {
-    return 'Hello World!';
+  getAll() {
+    const program = Effect.gen(function* () {
+      const reader = yield* SongsReader;
+      const result = reader.getAll();
+
+      return result;
+    });
+    return this.runtime.runPromise(program);
   }
 }

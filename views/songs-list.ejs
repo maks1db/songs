@@ -1,0 +1,8 @@
+<%- include('partials/head'); %>
+
+<body class="p-8 font-mono">
+
+    <% songs.forEach(function(song){ %>
+        <%- include('partials/song-item', song); %>
+    <% }); %>
+</body>

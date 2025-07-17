@@ -1,6 +1,6 @@
 import { Effect } from 'effect';
 
-import { readFiles } from './lib';
+import { makeTitle, readFiles } from './lib';
 import { NodeContext } from '@effect/platform-node/index';
 
 export class SongsReader extends Effect.Service<SongsReader>()('SongsReader', {
@@ -10,9 +10,15 @@ export class SongsReader extends Effect.Service<SongsReader>()('SongsReader', {
       return {
         getList: () =>
           data.map((x) => ({
-            title: `${x.artist} - ${x.title}`,
+            title: makeTitle(x.stringNumber, x.artist, x.title),
             id: x.id,
             number: x.stringNumber,
+          })),
+
+        getAll: () =>
+          data.map((x) => ({
+            ...x,
+            title: makeTitle(x.stringNumber, x.artist, x.title),
           })),
 
         getById: (id: string) => data.find((x) => x.id === id),

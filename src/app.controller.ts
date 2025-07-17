@@ -18,4 +18,12 @@ export class AppController {
     const item = await this.appService.getById(id);
     return item;
   }
+
+  @Get('songs-list')
+  @Render('songs-list')
+  async getAll() {
+    return this.appService
+      .getAll()
+      .then((list) => ({ songs: list, title: 'Список композиций для печати' }));
+  }
 }

@@ -1,6 +1,7 @@
 import { Effect, Option } from 'effect/index';
 import { FileSystem, Path } from '@effect/platform';
 import { Config } from './config';
+import { Song } from '../../utils/parse-song/parser/context';
 
 export const readFiles = Effect.gen(function* () {
   const path = yield* Path.Path;
@@ -62,4 +63,8 @@ const songToHTML = (song: string) => {
   return song
     .replaceAll('<>', '<span class="w-1/2">')
     .replaceAll('</>', '</span>');
+};
+
+export const makeTitle = (number: string, artist: string, title: string) => {
+  return `${number}.${artist} - ${title}`;
 };
