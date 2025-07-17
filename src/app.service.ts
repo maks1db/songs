@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Effect, Layer, ManagedRuntime } from 'effect/index';
 import { SongsReader } from './shared/reader';
-import { NodeContext } from '@effect/platform-node';
 import { Config } from './shared/config';
 import { join } from 'path';
 import { NoSuchElementException } from 'effect/Cause';
@@ -15,10 +14,12 @@ export class AppService {
   >;
 
   constructor() {
-    console.log(join(__dirname, '..', 'songs'));
+    console.log(join(__dirname, '..', '..', 'songs'));
     const MainLive = Layer.mergeAll(SongsReader.Default()).pipe(
       Layer.provideMerge(
-        Layer.succeed(Config, { rootDir: join(__dirname, '..', 'songs') }),
+        Layer.succeed(Config, {
+          rootDir: join(__dirname, '..', '..', 'songs'),
+        }),
       ),
     );
 

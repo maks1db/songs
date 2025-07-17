@@ -16,7 +16,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "parse": "tsx utils/parse-song --url",
+    "parse:debug": "tsx --inspect-brk utils/parse-song --url"
   },
   "dependencies": {
     "tailwindcss": "~4.1.11",
@@ -58,7 +60,11 @@
     "prettier": "^3.6.2",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
-    "@nestjs/cli": ""
+    "@nestjs/cli": "^11.0.7",
+    "puppeteer": "^24.14.0",
+    "@puppeteer/browsers":"^2.10.6",
+    "yargs": "^17.0.0",
+    "@types/yargs": "^17.0.33"
   },
    "jest": {
     "moduleFileExtensions": [

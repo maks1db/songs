@@ -173,11 +173,11 @@
   .flex {
     display: flex;
   }
+  .w-1\/2 {
+    width: calc(1/2 * 100%);
+  }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
-  }
-  .break-before-column {
-    break-before: column;
   }
   .break-after-page {
     break-after: page;

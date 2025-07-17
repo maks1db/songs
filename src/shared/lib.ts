@@ -59,5 +59,7 @@ export const parseFileName = (file: string) =>
   });
 
 const songToHTML = (song: string) => {
-  return song.replaceAll('<>', '<span>').replaceAll('</>', '</span>');
+  return song
+    .replaceAll('<>', '<span class="w-1/2">')
+    .replaceAll('</>', '</span>');
 };
