@@ -1,4 +1,4 @@
-import { Context, Data, Effect } from 'effect/index';
+import { Context, Effect } from 'effect/index';
 import { PuppeteerNode } from 'puppeteer';
 import { ParseSongError } from './context';
 
@@ -19,7 +19,6 @@ export class Puppeteer extends Effect.Service<Puppeteer>()('Puppeteer', {
     yield* Effect.addFinalizer(() => Effect.promise(() => browser.close()));
     return {
       open: (url: string) => {
-        console.log(url);
         return Effect.promise(() => page.goto(url));
       },
       get: (locator: string) =>
@@ -38,31 +37,4 @@ export class Puppeteer extends Effect.Service<Puppeteer>()('Puppeteer', {
         ),
     };
   }),
-  // effect: Effect.gen(function* () {
-  //   const puppeteer = yield* PuppeteerInstance;
-
-  //   const browser = yield* Effect.promise(() =>
-  //     puppeteer.launch({ headless: true }),
-  //   );
-
-  //   const page = yield* Effect.promise(() => browser.newPage());
-
-  //   return {
-  //     open: (url: string) => {
-  //       console.log(url);
-  //       return Effect.promise(() => page.goto(url));
-  //     },
-  //     get: (locator: string) =>
-  //       Effect.promise(() => page.$(locator)).pipe(
-  //         Effect.flatMap((x) => {
-  //           if (x === null) {
-  //             return Effect.fail(
-  //               new ParseSongError({ message: `Локатор не найден ${locator}` }),
-  //             );
-  //           }
-  //           return Effect.succeed(x);
-  //         }),
-  //       ),
-  //   };
-  // }),
 }) {}
