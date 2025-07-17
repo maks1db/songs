@@ -1,4 +1,5 @@
 import { FiveLadLive } from './parser/5lad.live';
+import { AkkordsProLive } from './parser/akkordspro.live';
 import yargs from 'yargs';
 import puppeteer from 'puppeteer';
 
@@ -15,6 +16,7 @@ const options = yargs.option('url', {
 const url: string = options.url;
 const mapDomains = {
   '5lad.net': FiveLadLive,
+  'akkords.pro/': AkkordsProLive,
 };
 
 const bootstrap = () => {
