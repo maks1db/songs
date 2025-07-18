@@ -24,9 +24,9 @@ export const AkkordsProLive = Layer.effect(
               x.replace('аккорды на гитаре и текст песни •', ''),
             ),
             Effect.map((x) => x.split(':').map((x) => x.trim())),
-            Effect.map(([artist, ...title]) => ({
-              title: title.join(':'),
-              artist,
+            Effect.map(([title, ...artist]) => ({
+              title: title,
+              artist: artist.join(':'),
             })),
           );
 

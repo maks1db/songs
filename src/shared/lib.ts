@@ -46,9 +46,10 @@ export const readFiles = Effect.gen(function* () {
 
 export const parseFileName = (file: string) =>
   Option.gen(function* () {
-    const result = yield* Option.fromNullable(/(.*)\.(.*)-(.*)/g.exec(file));
+    const result = yield* Option.fromNullable(/(.*)\.(.*)/g.exec(file));
 
-    const [_, number, artist, title] = result.map((x) => x.trim());
+    const [_, number, data] = result.map((x) => x.trim());
+    const [artist, ...titleList] = data.split('-').map((x) => x.trim());
     const parsedNumber = Number(number);
     if (Number.isNaN(parsedNumber)) {
       return yield* Option.none();
@@ -56,7 +57,12 @@ export const parseFileName = (file: string) =>
 
     const stringNumber = number.padStart(2, '0');
 
-    return { number: parsedNumber, artist, title, stringNumber };
+    return {
+      number: parsedNumber,
+      artist,
+      title: titleList.join('-'),
+      stringNumber,
+    };
   });
 
 const songToHTML = (song: string) => {
