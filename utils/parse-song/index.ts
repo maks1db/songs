@@ -23,9 +23,11 @@ const bootstrap = () => {
   const program = parse(url);
 
   const mainLive = Object.entries(mapDomains).reduce((acc, [key, live]) => {
-    if (url.includes(key)) {
+    if (url.includes(key) && !acc) {
       return live;
     }
+
+    return acc;
   }, null);
 
   if (!mainLive) {
